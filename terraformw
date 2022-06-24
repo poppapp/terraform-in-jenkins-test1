@@ -1,0 +1,27 @@
+#!/bin/bash 
+
+# based on https://tfswitch.warrensbox.com/Continuous-Integration/
+
+echo "Installing tfswitch locally"
+
+# Get the installer on to your machine
+wget -N -c https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh
+
+# Make installer executable
+chmod 755 install.sh
+
+# Install tfswitch in a location you have permission
+./install.sh -b $(pwd)/.bin
+
+# set custom bin path
+CUSTOMBIN=$(pwd)/.bin
+
+#Add custom bin path to PATH environment
+export PATH=$CUSTOMBIN:$PATH
+export AWS_ACCESS_KEY_ID="AKIATGW5OSJZT3NH57YE"
+export AWS_SECRET_ACCESS_KEY="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"
+export AWS_DEFAULT_REGION="us-east-1"
+
+$CUSTOMBIN/tfswitch -b $CUSTOMBIN/terraform
+
+terraform $*
