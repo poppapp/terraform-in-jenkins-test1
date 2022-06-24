@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label 'linux'}
   options {
     skipDefaultCheckout(true)
   }
@@ -12,11 +12,6 @@ pipeline {
     stage('checkout') {
       steps {
         checkout scm
-      }
-    }
-	stage('declare aws vars') {
-      steps {
-		sh 'echo to-be-filled'
       }
     }
     stage('terraform') {
