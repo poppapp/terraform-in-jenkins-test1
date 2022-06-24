@@ -18,9 +18,6 @@ CUSTOMBIN=$(pwd)/.bin
 
 #Add custom bin path to PATH environment
 export PATH=$CUSTOMBIN:$PATH
-export AWS_ACCESS_KEY_ID="AKIATGW5OSJZT3NH57YE"
-export AWS_SECRET_ACCESS_KEY="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"
-export AWS_DEFAULT_REGION="us-east-1"
 
 $CUSTOMBIN/tfswitch -b $CUSTOMBIN/terraform
 
